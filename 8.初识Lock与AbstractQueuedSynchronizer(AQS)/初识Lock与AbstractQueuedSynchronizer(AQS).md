@@ -26,11 +26,11 @@
 
 我们现在就来看看lock接口定义了哪些方法：
 
-> void lock(); //获取锁
-> void lockInterruptibly() throws InterruptedException；//获取锁的过程能够响应中断
-> boolean tryLock();//非阻塞式响应中断能立即返回，获取锁返回true反之返回fasle
-> boolean tryLock(long time, TimeUnit unit) throws InterruptedException;//超时获取锁，在超时内或者未中断的情况下能够获取锁
-> Condition newCondition();//获取与lock绑定的等待通知组件，当前线程必须获得了锁才能进行等待，进行等待时会先释放锁，当再次获取锁时才能从等待中返回
+> void lock(); //获取锁  
+> void lockInterruptibly() throws InterruptedException；//获取锁的过程能够响应中断  
+> boolean tryLock();//非阻塞式响应中断能立即返回，获取锁返回true反之返回fasle  
+> boolean tryLock(long time, TimeUnit unit) throws InterruptedException;//超时获取锁，在超时内或者未中断的情况下能够获取锁  
+> Condition newCondition();//获取与lock绑定的等待通知组件，当前线程必须获得了锁才能进行等待，进行等待时会先释放锁，当再次获取锁时才能从等待中返回  
 
 上面是lock接口下的五个方法，也只是从源码中英译中翻译了一遍，感兴趣的可以自己的去看看。那么在locks包下有哪些类实现了该接口了？先从最熟悉的ReentrantLock说起。
 
