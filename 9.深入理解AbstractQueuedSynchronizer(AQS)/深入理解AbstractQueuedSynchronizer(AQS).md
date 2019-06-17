@@ -7,16 +7,16 @@
 
 **独占式锁：**
 
-> void acquire(int arg)：独占式获取同步状态，如果获取失败则插入同步队列进行等待；
-> void acquireInterruptibly(int arg)：与acquire方法相同，但在同步队列中进行等待的时候可以检测中断；
-> boolean tryAcquireNanos(int arg, long nanosTimeout)：在acquireInterruptibly基础上增加了超时等待功能，在超时时间内没有获得同步状态返回false;
-> boolean release(int arg)：释放同步状态，该方法会唤醒在同步队列中的下一个节点
+> void acquire(int arg)：独占式获取同步状态，如果获取失败则插入同步队列进行等待；  
+> void acquireInterruptibly(int arg)：与acquire方法相同，但在同步队列中进行等待的时候可以检测中断；  
+> boolean tryAcquireNanos(int arg, long nanosTimeout)：在acquireInterruptibly基础上增加了超时等待功能，在超时时间内没有获得同步状态返回false;  
+> boolean release(int arg)：释放同步状态，该方法会唤醒在同步队列中的下一个节点 
 
 **共享式锁：**
-> void acquireShared(int arg)：共享式获取同步状态，与独占式的区别在于同一时刻有多个线程获取同步状态；
-> void acquireSharedInterruptibly(int arg)：在acquireShared方法基础上增加了能响应中断的功能；
-> boolean tryAcquireSharedNanos(int arg, long nanosTimeout)：在acquireSharedInterruptibly基础上增加了超时等待的功能；
-> boolean releaseShared(int arg)：共享式释放同步状态
+> void acquireShared(int arg)：共享式获取同步状态，与独占式的区别在于同一时刻有多个线程获取同步状态；  
+> void acquireSharedInterruptibly(int arg)：在acquireShared方法基础上增加了能响应中断的功能；  
+> boolean tryAcquireSharedNanos(int arg, long nanosTimeout)：在acquireSharedInterruptibly基础上增加了超时等待的功能；  
+> boolean releaseShared(int arg)：共享式释放同步状态   
 
 
 要想掌握AQS的底层实现，其实也就是对这些模板方法的逻辑进行学习。在学习这些模板方法之前，我们得首先了解下AQS中的同步队列是一种什么样的数据结构，因为同步队列是AQS对同步状态的管理的基石。
